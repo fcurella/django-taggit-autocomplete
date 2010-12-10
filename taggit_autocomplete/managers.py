@@ -12,9 +12,10 @@ class TaggableManager(BaseTaggableManager):
         defaults = {
             "label": _("Tags"),
             "help_text": _("A comma-separated list of tags."),
+            "required": not self.blank,
         }
         defaults.update(kwargs)
         
         kwargs['widget'] = TagAutocomplete
         
-        return form_class(**kwargs)
+        return form_class(**defaults)
