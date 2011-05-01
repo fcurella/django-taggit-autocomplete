@@ -23,4 +23,7 @@ setup(
         'Framework :: Django',
     ],
     zip_safe=False,
+    install_requires=[
+        'django-taggit',
+    ],
 ) 
