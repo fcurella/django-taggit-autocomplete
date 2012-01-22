@@ -15,5 +15,11 @@ class TaggableManager(BaseTaggableManager):
             "widget": TagAutocomplete
         }
         defaults.update(kwargs)
-        
+
         return form_class(**defaults)
+
+try:
+    from south.modelsinspector import add_ignored_fields
+    add_ignored_fields(["^taggit_autocomplete\.managers"])
+except ImportError:
+    pass
