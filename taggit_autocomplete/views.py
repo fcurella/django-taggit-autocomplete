@@ -1,7 +1,10 @@
 from django.http import HttpResponse
-from django.core import serializers
 from taggit.models import Tag
-from django.utils import simplejson
+try:
+    from django.utils import simplejson as json
+except ImportError:
+    import json
+
 from django.utils.datastructures import MultiValueDictKeyError
 
 def list_tags(request):
@@ -11,4 +14,4 @@ def list_tags(request):
 	except MultiValueDictKeyError:
 		data = []
 	
-	return HttpResponse(simplejson.dumps(data), mimetype='application/json')
+	return HttpResponse(json.dumps(data), mimetype='application/json')
